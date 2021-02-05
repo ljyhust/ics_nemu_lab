@@ -253,7 +253,7 @@ vaddr_t isa_exec_once() {
   fetch_decode_exec(&s);
   
   //printf("====>opcode=%x, ebp=%x, esp=%x, eax=%x, ecx=%x, edx=%x, ebx=%x, edi=%x, esi=%x, cpu.pc=%x\n",
-     s.opcode, reg_l(R_EBP), reg_l(R_ESP), reg_l(R_EAX), reg_l(R_ECX), cpu.edx, cpu.ebx, cpu.edi, cpu.esi, cpu.pc);
+  //   s.opcode, reg_l(R_EBP), reg_l(R_ESP), reg_l(R_EAX), reg_l(R_ECX), cpu.edx, cpu.ebx, cpu.edi, cpu.esi, cpu.pc);
   
   update_pc(&s);
 

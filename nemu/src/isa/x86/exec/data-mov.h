@@ -5,12 +5,14 @@ static inline def_EHelper(mov) {
 
 static inline def_EHelper(push) {
   //TODO();
-  rtl_push(s, ddest);
+  rtl_add(s, s0, ddest, rz);
+  rtl_push(s, s0);
   print_asm_template1(push);
 }
 
 static inline def_EHelper(pushm) {
-  rtl_push(s, ddest);
+  rtl_add(s, s0, ddest, rz);
+  rtl_push(s, s0);
   //printf("=====> s result is %x, \n", s->dest.val);
   print_asm_template1(push);
 }

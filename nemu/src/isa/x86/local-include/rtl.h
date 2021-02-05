@@ -29,8 +29,8 @@ static inline def_rtl(push, const rtlreg_t* src1) {
   // esp <- esp - 4
   // M[esp] <- src1
   //TODO();
-  reg_l(R_ESP) -= 4;
-  vaddr_write(reg_l(R_ESP), *src1, 4);
+  cpu.esp -= 4;
+  vaddr_write(cpu.esp, *src1, 4);
   #ifdef DEBUG
     //printf("====> push src=%x, pc=%x \n", *src1, cpu.pc);
   #endif
@@ -38,20 +38,19 @@ static inline def_rtl(push, const rtlreg_t* src1) {
 
 // cpu.esp 表示esp值，&cpu.esp表示寄存器
 static inline def_rtl(push_i, word_t imm) {
-  reg_l(R_ESP) -= 4;
-  vaddr_write(reg_l(R_ESP), imm, 4);
+  cpu.esp -= 4;
+  vaddr_write(cpu.esp, imm, 4);
 }
 
 static inline def_rtl(pop, rtlreg_t* dest) {
   // dest <- M[esp]
   // esp <- esp + 4
   // des 一般是 &cpu.pc
-  *dest = vaddr_read(reg_l(R_ESP), 4);
+  *dest = vaddr_read(cpu.esp, 4);
   #ifdef DEBUG
     //printf("====> pop dest=%x cpu.pc=%x\n", *dest, cpu.pc);
   #endif
-  reg_l(R_ESP) += 4;
-  // cpu.esp = cpu.esp + 4;
+  cpu.esp = cpu.esp + 4;
   //TODO();
 }
 
